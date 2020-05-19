@@ -1,0 +1,114 @@
+    function TransTitle(props){
+        return (
+            <div>
+                <h2>{props.title}</h2>
+                <p>{props.subtitle}</p>
+            </div>
+
+        )
+    }
+
+    function VehicleOptions(props){
+        return (
+            <div>
+                <h3>{props.title}</h3>                
+                {props.subtitle} 
+                <input type="checkbox" checked/>
+                <p></p>
+            </div>
+        )
+    }
+
+
+    function CategoryItem(props){
+        return <option value = {props.value}>{props.value}</option>
+    }
+
+    function CategoryList(props){
+        return (
+            <div>
+                {props.title}
+                  <select>
+                    <CategoryItem value = {props.categories[0]}/>
+                    <CategoryItem value = {props.categories[1]}/>
+                    <CategoryItem value = {props.categories[2]}/>
+                    <CategoryItem value = {props.categories[3]}/> 
+                  </select>                    
+            </div>
+
+        )
+    }
+    function VehicleHeaders(props){
+        return (
+             <tr>
+                <th>Year</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Buy</th>            
+             </tr>
+        )
+    }
+
+    function VehicleRows(props){
+        return (
+            <tr>
+                <td>{props.year}</td>
+                <td>{props.model}</td>
+                <td>{props.price}</td>
+                <td><button className="btn btn-outline-dark">Buy Now</button></td>                     
+            </tr>
+          )
+
+        
+    }
+
+    function VehicleList(props){
+        return (
+            <div>
+                <h2>{props.header}</h2>
+                <table className="table table-striped">
+                    <tbody>
+                       <VehicleHeaders/>  
+                       {props.vehicles.map(vehicle => {
+                           return (
+                              <VehicleRows year = {vehicle.year} model={vehicle.model} price = {vehicle.price}/> 
+                           );
+                        
+                      }
+                            
+                     )}
+                  </tbody>
+                </table>
+            </div>
+        )
+    }
+
+    function TransportationApp(props){
+
+        return (
+            <div classname="container-fluid">
+                <TransTitle title = "Welcome to React Transportation" subtitle = "The best place to buy vehicles online" />
+                <VehicleOptions title = "Choose Options" subtitle = "New Only"/>
+                <CategoryList title = "Select Type" categories = {["All", "Cars", "Trucks", "Convertibles"]}/>
+                <VehicleList header = "Cars" vehicles = {[ 
+                {year: 2013, model: "A", price:"$32000"},
+                {year: 2011, model: "B", price:"$4400"},
+                {year: 2016, model: "C", price:"$15500"}
+                                                      ]}/>
+                <VehicleList header = "Trucks" vehicles = {[ 
+                {year: 2014, model: "D", price:"$18000"},
+                {year: 2013, model: "E", price:"$5200"}               
+                                                        ]}/>
+                <VehicleList header = "Convertibles" vehicles = {[ 
+                {year: 2009, model: "F", price:"$2000"},
+                {year: 2010, model: "G", price:"$6000"},
+                {year: 2012, model: "H", price:"$12500"},
+                {year: 2017, model: "M", price:"$50000"}                                                                            ]}/>
+            </div>
+        )
+    }
+
+    ReactDOM.render(
+        <TransportationApp/>,
+        document.getElementById("root")
+    )

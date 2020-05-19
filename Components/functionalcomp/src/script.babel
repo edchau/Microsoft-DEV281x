@@ -1,0 +1,8 @@
+function HelloWorld(props){
+  return <h1>Value: {props.numberArray[props.index]} </h1>
+}
+
+ReactDOM.render(
+  <HelloWorld index = "3" numberArray={[1,2,3,4,5]}/>,
+  document.getElementById("root")
+)

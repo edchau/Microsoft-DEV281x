@@ -1,0 +1,9 @@
+function Feature(props){
+  return (
+    props.active && <h1>{props.message}</h1>
+  )
+}
+ReactDOM.render(
+  <Feature active={true} message = "hi"/>,
+  document.getElementById("root")
+)
